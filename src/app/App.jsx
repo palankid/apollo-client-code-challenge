@@ -7,6 +7,8 @@ import NotFound from '../routes/NotFound';
 
 import LoadingMessage from '../components/LoadingMessage';
 
+import 'antd/dist/antd.css';
+
 const App = () => {
   const routeComponents = routes.map((route) => (
     <Route
