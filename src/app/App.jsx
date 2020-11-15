@@ -1,8 +1,10 @@
 import React, {Suspense} from 'react';
 import { hot } from 'react-hot-loader/root';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
 
 import routes, { routeNames } from '../config/routes.config';
+import client from '../config/client.config';
 import NotFound from '../routes/NotFound';
 
 import LoadingMessage from '../components/LoadingMessage';
@@ -22,15 +24,17 @@ const App = () => {
   const loadingMessage = <LoadingMessage message="Loading modules" />;
 
   return (
-    <BrowserRouter basename={routeNames.root}>
-      <Suspense
-        fallback={loadingMessage}>
-        <Switch>
-          {routeComponents}
-          <Route component={NotFound} />
-        </Switch>
-      </Suspense>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <BrowserRouter basename={routeNames.root}>
+        <Suspense
+          fallback={loadingMessage}>
+          <Switch>
+            {routeComponents}
+            <Route component={NotFound} />
+          </Switch>
+        </Suspense>
+      </BrowserRouter>
+    </ApolloProvider>
   )
 };
 

@@ -24,7 +24,7 @@ const routes = [
   {
     path: routeNames.edit,
     exact: true,
-    component: EditView,
+    component: EditView
   }
 ];
 

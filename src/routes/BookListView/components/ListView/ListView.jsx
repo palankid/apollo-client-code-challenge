@@ -1,102 +1,91 @@
-import React from 'react';
-import { Table } from 'antd';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { array, bool, number } from 'prop-types';
+import { Table, Button } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
 
-const data = [
-    {
-      key: '1',
-      name: 'John Brown',
-      age: 32,
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      key: '2',
-      name: 'Jim Green',
-      age: 42,
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      key: '3',
-      name: 'Joe Black',
-      age: 32,
-      address: 'Sidney No. 1 Lake Park',
-    },
-    {
-      key: '4',
-      name: 'Jim Red',
-      age: 32,
-      address: 'London No. 2 Lake Park',
-    },
-    {
-        key: '5',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      },
-      {
-        key: '6',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      },
-      {
-        key: '7',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      },
-      {
-        key: '8',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      },
-      {
-        key: '9',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      },
-      {
-        key: '10',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      },
-      {
-        key: '11',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-      }
-  ];
+import { routeNames } from '../../../../config/routes.config';
 
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name'
-    },
-    {
-      title: 'Age',
-      dataIndex: 'age',
-      key: 'age'
-    },
-    {
-      title: 'Address',
-      dataIndex: 'address',
-      key: 'address'
-    },
-  ];
+const { Column } = Table;
 
-const ListView = ({ listViewHeight }) => {
-    return (
-        <Table
-            columns={columns}
-            dataSource={data}
-            pagination={false}
-            scroll={{ y: listViewHeight - 55 }}
-        />
-    );
+const ListView = ({ books, listViewHeight, loading }) => {
+  const history = useHistory();
+  const [selectedRowKeys, setSelectedRowKeys] = useState([]);
+  
+  const headerHeight = 55;
+  const scrollSettings = {
+    y: listViewHeight - headerHeight
+  };
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: setSelectedRowKeys,
+  };
+
+  const handleEditClick = bookId => () => {
+    history.push({
+      pathname: routeNames.edit,
+      state: { bookId }
+    });
+    console.log(bookId);
+  };
+
+  return (
+    <Table
+        dataSource={books}
+        rowSelection={rowSelection}
+        pagination={false}
+        rowKey={record => record.bookId}
+        loading={loading}
+        scroll={scrollSettings}
+    >
+      <Column
+        title="Id"
+        dataIndex="bookId"
+        key="bookId"
+        width={80}
+      />
+      <Column
+        title="Title"
+        dataIndex="title"
+        key="title"
+      />
+      <Column
+        title="Author"
+        dataIndex="author"
+        key="author"
+        width={300}
+      />
+      <Column
+        title="Price"
+        dataIndex="price"
+        key="price"
+        width={100}
+      />
+      <Column
+        title=""
+        key="edit"
+        width={100}
+        render={(text, record) => (
+          <Button
+            icon={<EditOutlined />}
+            onClick={handleEditClick(record.bookId)}
+          >
+            Edit
+          </Button>
+        )}
+      />
+    </Table>
+  );
 };
+
+ListView.propTypes = {
+  books: array,
+  listViewHeight: number.isRequired,
+  loading: bool.isRequired
+};
+
+ListView.defaultProps = {
+  books: []
+}
 
 export default ListView;

@@ -39,7 +39,7 @@ const Header = () => {
                 icon={<PlusOutlined />}
                 onClick={handleAddNewClick}
             >
-                Add new book
+                Add a book
             </Button>
         </header>
     );

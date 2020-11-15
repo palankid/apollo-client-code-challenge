@@ -1,32 +1,45 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
+import { useMutation, gql } from '@apollo/client';
 
+import BookOperationsForm from '../../components/BookOperationsForm';
 import { routeNames } from '../../config/routes.config';
+
+const EDIT_BOOK = gql`
+    mutation EditBook($bookId: Int!, $title: String!, $author: String!, $price: Float!) {
+        editBook(bookId: $bookId, title: $title, author: $author, price: $price) {
+            id: bookId
+        }
+    }
+`;
 
 const EditView = () => {
     const history = useHistory();
+    const location = useLocation();
+    const [editBook, { data }] = useMutation(EDIT_BOOK);
 
-    const handleClick1 = () => {
-        history.push(routeNames.create);
-    }
+    const handleFinish = (variables) => {
+        editBook({ variables });
+    };
 
-    const handleClick2 = () => {
+    const handleCancel = () => {
         history.push(routeNames.root);
     }
 
+    const initialValues = {
+        bookId: location.state.bookId,
+        title: 'Hello world',
+        author: 'Susu',
+        price: 11.23
+    };
     return (
-        <div>
-            Edit View
-            <button
-                onClick={handleClick1}>
-                Go to Create View
-            </button>
-            <button
-                onClick={handleClick2}>
-                Go to Book List View
-            </button>
-        </div>
-    )
+        <BookOperationsForm
+            isCreateMode={false}
+            initialValues={initialValues}
+            onFinish={handleFinish}
+            onCancel={handleCancel}
+        />
+    );
 }
 
 export default EditView;
