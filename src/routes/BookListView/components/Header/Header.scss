@@ -1,0 +1,25 @@
+.page-header {
+    display: flex;
+    background-color: #FFFFFF;
+    padding: 20px 0;
+    align-items: center;
+
+    &__icon {
+        font-size: 30px;
+    }
+
+    &__title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    &__nav-button,
+    &__stat {
+        margin-left: auto;
+    }
+
+    &__price {
+        margin-left: 20px;
+    }
+}
