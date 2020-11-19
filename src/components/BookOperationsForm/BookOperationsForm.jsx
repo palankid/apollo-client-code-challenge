@@ -37,7 +37,7 @@ const BookOperationsForm = ({
             >
                 {!isCreateMode && (
                     <Form.Item
-                        name="bookId"
+                        name="id"
                         label="Id"
                     >
                         <Input disabled />
@@ -93,7 +93,7 @@ const BookOperationsForm = ({
 
 BookOperationsForm.propTypes = {
     initialValues: PropTypes.shape({
-        bookId: PropTypes.number,
+        id: PropTypes.number,
         title: PropTypes.string,
         author: PropTypes.string,
         price: PropTypes.number
@@ -105,7 +105,7 @@ BookOperationsForm.propTypes = {
 
 BookOperationsForm.defaultProps = {
     initialValues: {
-        bookId: null,
+        id: null,
         title: '',
         author: '',
         price: null

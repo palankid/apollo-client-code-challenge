@@ -3,7 +3,7 @@ import { hot } from 'react-hot-loader/root';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 
-import routes, { routeNames } from '../config/routes.config';
+import routes, { ROUTE_NAMES } from '../config/routes.config';
 import client from '../config/client.config';
 import NotFound from '../routes/NotFound';
 
@@ -25,7 +25,7 @@ const App = () => {
 
   return (
     <ApolloProvider client={client}>
-      <BrowserRouter basename={routeNames.root}>
+      <BrowserRouter basename={ROUTE_NAMES.ROOT}>
         <Suspense
           fallback={loadingMessage}>
           <Switch>

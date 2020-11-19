@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { Button, Statistic, Row } from 'antd';
 import { BookOutlined, PlusOutlined } from '@ant-design/icons';
 
-import { routeNames } from '../../../../config/routes.config';
+import { ROUTE_NAMES } from '../../../../config/routes.config';
 
 const Header = () => {
     const history = useHistory();
 
     const handleAddNewClick = () => {
-        history.push(routeNames.create);
+        history.push(ROUTE_NAMES.CREATE);
     };
 
     return (

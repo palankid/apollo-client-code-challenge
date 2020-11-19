@@ -1,41 +1,34 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useMutation, gql } from '@apollo/client';
 
 import BookOperationsForm from '../../components/BookOperationsForm';
-import { routeNames } from '../../config/routes.config';
+import { ROUTE_NAMES } from '../../config/routes.config';
 
-const EDIT_BOOK = gql`
-    mutation EditBook($bookId: Int!, $title: String!, $author: String!, $price: Float!) {
-        editBook(bookId: $bookId, title: $title, author: $author, price: $price) {
-            id: bookId
-        }
-    }
-`;
+import { useGetBook } from './operations/queries/getBook'
+import { useEditBook } from './operations/mutations/editBook';
 
 const EditView = () => {
     const history = useHistory();
     const location = useLocation();
-    const [editBook, { data }] = useMutation(EDIT_BOOK);
+    const [ editBook ] = useEditBook();
+    const { loading, error, book } = useGetBook(location.state?.bookId);
 
-    const handleFinish = (variables) => {
-        editBook({ variables });
+    if (loading) return <p>Loading......</p>;
+    if (error) return <p>Error: {error}</p>;
+        
+    const handleFinish = async (variables) => {
+        await editBook({ variables });
+        history.push(ROUTE_NAMES.ROOT);
     };
 
     const handleCancel = () => {
-        history.push(routeNames.root);
+        history.push(ROUTE_NAMES.ROOT);
     }
 
-    const initialValues = {
-        bookId: location.state.bookId,
-        title: 'Hello world',
-        author: 'Susu',
-        price: 11.23
-    };
     return (
         <BookOperationsForm
             isCreateMode={false}
-            initialValues={initialValues}
+            initialValues={book}
             onFinish={handleFinish}
             onCancel={handleCancel}
         />

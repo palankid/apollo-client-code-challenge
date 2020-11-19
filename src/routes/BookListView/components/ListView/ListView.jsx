@@ -4,7 +4,7 @@ import { array, bool, number } from 'prop-types';
 import { Table, Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-import { routeNames } from '../../../../config/routes.config';
+import { ROUTE_NAMES } from '../../../../config/routes.config';
 
 const { Column } = Table;
 
@@ -23,10 +23,9 @@ const ListView = ({ books, listViewHeight, loading }) => {
 
   const handleEditClick = bookId => () => {
     history.push({
-      pathname: routeNames.edit,
+      pathname: ROUTE_NAMES.EDIT,
       state: { bookId }
     });
-    console.log(bookId);
   };
 
   return (
@@ -34,14 +33,14 @@ const ListView = ({ books, listViewHeight, loading }) => {
         dataSource={books}
         rowSelection={rowSelection}
         pagination={false}
-        rowKey={record => record.bookId}
+        rowKey={record => record.id}
         loading={loading}
         scroll={scrollSettings}
     >
       <Column
         title="Id"
-        dataIndex="bookId"
-        key="bookId"
+        dataIndex="id"
+        key="id"
         width={80}
       />
       <Column
@@ -68,7 +67,7 @@ const ListView = ({ books, listViewHeight, loading }) => {
         render={(text, record) => (
           <Button
             icon={<EditOutlined />}
-            onClick={handleEditClick(record.bookId)}
+            onClick={handleEditClick(record.id)}
           >
             Edit
           </Button>

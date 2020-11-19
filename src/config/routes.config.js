@@ -4,25 +4,25 @@ const BookListView = React.lazy(() => import('../routes/BookListView'));
 const EditView = React.lazy(() => import('../routes/EditView'));
 const CreateView = React.lazy(() => import('../routes/CreateView'));
 
-export const routeNames = {
-  root: '/',
-  create: '/create',
-  edit: '/edit',
+export const ROUTE_NAMES = {
+  ROOT: '/',
+  CREATE: '/create',
+  EDIT: '/edit',
 };
 
 const routes = [
   {
-    path: routeNames.root,
+    path: ROUTE_NAMES.ROOT,
     exact: true,
     component: BookListView
   },
   {
-    path: routeNames.create,
+    path: ROUTE_NAMES.CREATE,
     exact: true,
     component: CreateView,
   },
   {
-    path: routeNames.edit,
+    path: ROUTE_NAMES.EDIT,
     exact: true,
     component: EditView
   }

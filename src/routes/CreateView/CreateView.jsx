@@ -1,31 +1,22 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { useMutation, gql } from '@apollo/client';
 
 import BookOperationsForm from '../../components/BookOperationsForm';
-import { routeNames } from '../../config/routes.config';
+import { ROUTE_NAMES } from '../../config/routes.config';
 
-const CREATE_BOOK = gql`
-    mutation CreateBook($title: String!, $author: String!, $price: Float!) {
-        createBook(title: $title, author: $author, price: $price) {
-            bookId,
-            title,
-            author,
-            price
-        }
-    }
-`;
+import { useCreateBook } from './operations/mutations/createBook';
 
 const CreateView = () => {
     const history = useHistory();
-    const [createBook, { data }] = useMutation(CREATE_BOOK);
+    const { createBook } = useCreateBook();
 
-    const handleFinish = variables => {
-        createBook({ variables });
+    const handleFinish = async variables => {
+        await createBook({ variables });
+        history.push(ROUTE_NAMES.ROOT);
     };
 
     const handleCancel = () => {
-        history.push(routeNames.root);
+        history.push(ROUTE_NAMES.ROOT);
     }
 
     return (
