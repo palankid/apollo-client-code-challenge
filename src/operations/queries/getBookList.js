@@ -6,7 +6,8 @@ export const GET_BOOK_LIST = gql`
             id: bookId,
             title,
             author,
-            price
+            price,
+            selected @client
         }
     }
 `;

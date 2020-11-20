@@ -1,17 +1,26 @@
 import React from 'react';
 import { bool, string } from 'prop-types';
 
-const LoadingMessage = ({ message, visible = true }) => {
-  if (!visible) { return null }
+import { Spin, Space } from 'antd';
 
-  return (
-    <div>{message}</div>
-  );
+const LoadingMessage = ({ message, visible = true }) => {
+    if (!visible) { return null }
+
+    return (
+        <div className="loading-message">
+            <Space size="middle">
+                <Spin size="large" />
+                <span className="loading-message__text">
+                    { message }
+                </span>
+            </Space>
+        </div>
+    );
 };
 
 LoadingMessage.propTypes = {
-  message: string.isRequired,
-  visible: bool,
+    message: string.isRequired,
+    visible: bool,
 };
 
 export default LoadingMessage;

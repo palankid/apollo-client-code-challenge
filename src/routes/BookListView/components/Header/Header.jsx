@@ -5,8 +5,12 @@ import { BookOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { ROUTE_NAMES } from '../../../../config/routes.config';
 
+import { useSelectedBookCount } from '../../operations/mutations/selectedBooks';
+
 const Header = () => {
     const history = useHistory();
+    const booksInfo = useSelectedBookCount();
+    const shouldShowBookInfo = Boolean(booksInfo?.bookCount);
 
     const handleAddNewClick = () => {
         history.push(ROUTE_NAMES.CREATE);
@@ -19,19 +23,23 @@ const Header = () => {
                 size={50}
             />
             <span className="page-header__title">
-                Book App
+                Books
             </span>
-            <Statistic
-                className="page-header__stat"
-                title="Books"
-                value="12"
-            />
-            <Statistic
-                className="page-header__price"
-                title="Total"
-                prefix="$"
-                value={3345.08}
-            />
+            {shouldShowBookInfo && (
+                <>
+                    <Statistic
+                        className="page-header__stat"
+                        title="Books"
+                        value={booksInfo?.bookCount}
+                    />
+                    <Statistic
+                        className="page-header__price"
+                        title="Total"
+                        prefix="$"
+                        value={booksInfo?.sumPrice}
+                    />
+                </>
+            )}
             <Button
                 className="page-header__nav-button"
                 key="create"

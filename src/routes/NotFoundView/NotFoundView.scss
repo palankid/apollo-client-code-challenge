@@ -1,0 +1,15 @@
+.not-found {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+
+    &__content {
+        font-size: 2rem;
+        padding: 10px;
+        color: #FFFFFF;
+        background: linear-gradient(138deg, rgba(255,127,78,1) 0%, rgba(246,76,84,1) 100%);
+    }
+}

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { useGetBookList } from '../../operations/queries/getBookList';
 
 import Header from './components/Header';
-import ListView from './components/ListView';
+import BookList from './components/BookList';
 import useListViewHeight from './useListViewHeight';
 
 const BookListView = () => {
@@ -16,16 +16,16 @@ const BookListView = () => {
     if (error) return <p>Error: {error}</p>;
 
     return (
-        <div className="book-list-view">
+        <>
             <div ref={headerRef}>
-              <Header />
+                <Header />
             </div>
-            <ListView
-              listViewHeight={listViewHeight}
-              books={data?.books}
-              loading={loading}
+            <BookList
+                listViewHeight={listViewHeight}
+                books={data?.books}
+                loading={loading}
             />
-        </div>
+        </>
     );
 };
 

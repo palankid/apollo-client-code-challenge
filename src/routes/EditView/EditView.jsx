@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 
 import BookOperationsForm from '../../components/BookOperationsForm';
+import Header from '../../components/BookOperationsHeader';
 import { ROUTE_NAMES } from '../../config/routes.config';
 
 import { useGetBook } from './operations/queries/getBook'
@@ -26,12 +27,15 @@ const EditView = () => {
     }
 
     return (
-        <BookOperationsForm
-            isCreateMode={false}
-            initialValues={book}
-            onFinish={handleFinish}
-            onCancel={handleCancel}
-        />
+        <>
+            <Header titleFragment="Edit" />
+            <BookOperationsForm
+                isCreateMode={false}
+                initialValues={book}
+                onFinish={handleFinish}
+                onCancel={handleCancel}
+            />
+        </>
     );
 }
 

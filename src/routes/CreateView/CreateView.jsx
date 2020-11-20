@@ -2,6 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import BookOperationsForm from '../../components/BookOperationsForm';
+import Header from '../../components/BookOperationsHeader';
 import { ROUTE_NAMES } from '../../config/routes.config';
 
 import { useCreateBook } from './operations/mutations/createBook';
@@ -20,11 +21,14 @@ const CreateView = () => {
     }
 
     return (
-        <BookOperationsForm
-            isCreateMode={true}
-            onFinish={handleFinish}
-            onCancel={handleCancel}
-        />
+        <>
+            <Header titleFragment="Create" />
+            <BookOperationsForm
+                isCreateMode={true}
+                onFinish={handleFinish}
+                onCancel={handleCancel}
+            />
+        </>
     )
 }
 

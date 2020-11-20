@@ -6,15 +6,15 @@ const useListViewHeight = (headerRef) => {
     const [listViewHeight, setListViewHeight] = useState(0);
 
     const onWindowResize = debounce(() => {
-      const listViewHeight = window.innerHeight - headerRef.current.getBoundingClientRect().height;
-      setListViewHeight(listViewHeight);
+        const listViewHeight = window.innerHeight - headerRef.current.getBoundingClientRect().height;
+        setListViewHeight(listViewHeight);
     }, 100);
 
     useEffect(() => {
-      window.addEventListener('resize', onWindowResize);
-      onWindowResize();
+        window.addEventListener('resize', onWindowResize);
+        onWindowResize();
 
-      () => window.removeEventListener('resize', onWindowResize)
+        () => window.removeEventListener('resize', onWindowResize)
     }, []);
 
     return listViewHeight;
