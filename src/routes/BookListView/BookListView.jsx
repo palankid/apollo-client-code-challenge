@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
+import { handleErrorIfApplicable } from '../../utils/notification.utils';
 import { useGetBookList } from '../../operations/queries/getBookList';
 
 import Header from './components/Header';
@@ -13,10 +14,10 @@ const BookListView = () => {
     const listViewHeight = useListViewHeight(headerRef);
     const { loading, error, data } = useGetBookList();
 
-    if (error) return <p>Error: {error}</p>;
+    handleErrorIfApplicable(error);
 
     return (
-        <>
+        <div className="book-list-view">
             <div ref={headerRef}>
                 <Header />
             </div>
@@ -25,7 +26,7 @@ const BookListView = () => {
                 books={data?.books}
                 loading={loading}
             />
-        </>
+        </div>
     );
 };
 

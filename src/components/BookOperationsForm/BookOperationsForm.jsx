@@ -19,6 +19,8 @@ import {
 const BookOperationsForm = ({
     initialValues,
     isCreateMode,
+    loading,
+    disabled,
     onFinish,
     onCancel
 }) => {
@@ -75,6 +77,8 @@ const BookOperationsForm = ({
                         <Button
                             type="primary"
                             htmlType="submit"
+                            loading={loading}
+                            disabled={disabled}
                         >
                             {primaryButtonLabel}
                         </Button>
@@ -99,6 +103,8 @@ BookOperationsForm.propTypes = {
         price: PropTypes.number
     }),
     isCreateMode: PropTypes.bool,
+    disabled: PropTypes.bool,
+    loading: PropTypes.bool,
     onFinish: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired
 };
@@ -110,7 +116,9 @@ BookOperationsForm.defaultProps = {
         author: '',
         price: null
     },
-    isCreateMode: true
+    isCreateMode: true,
+    disabled: false,
+    loading: false
 };
 
 export default BookOperationsForm;

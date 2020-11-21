@@ -1,4 +1,9 @@
+import { useHistory, useLocation } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
+
+import { useGetBook } from '../queries/getBook';
+import { handleErrorIfApplicable } from '../../../../utils/notification.utils';
+import { ROUTE_NAMES } from '../../../../config/routes.config';
 
 const EDIT_BOOK = gql`
     mutation EditBook($id: Int!, $title: String!, $author: String!, $price: Float!) {
@@ -12,7 +17,31 @@ const EDIT_BOOK = gql`
 `;
 
 export const useEditBook = () => {
-    const [editBook, { data, error }] = useMutation(EDIT_BOOK);
+    const location = useLocation();
+    const history = useHistory();
+    const { loading, error, book } = useGetBook(location.state?.bookId);
+    const [ editBook, { loading: isEditLoading, error: isEditError } ] = useMutation(EDIT_BOOK);
 
-    return [editBook, data, error];
+    handleErrorIfApplicable(error);
+
+    const handleFinish = async (variables) => {
+        try {
+            await editBook({ variables });
+            history.push(ROUTE_NAMES.ROOT);
+        } catch (e) {
+            handleErrorIfApplicable(e)
+        }
+    };
+    
+    const handleCancel = () => {
+        history.push(ROUTE_NAMES.ROOT);
+    }
+    
+    return {
+        loading: loading || isEditLoading,
+        error: error || isEditError,
+        book,
+        handleFinish,
+        handleCancel
+    } ;
 };

@@ -69,6 +69,7 @@ const config = {
     contentBase: './dist',
     publicPath: '/',
     historyApiFallback: true,
+    open: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
