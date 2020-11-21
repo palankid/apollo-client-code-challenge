@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const dotenvConfig = require('dotenv').config();
 
 const config = {
   entry: [
@@ -76,7 +77,10 @@ const config = {
         template: require('html-webpack-template'),
         inject: false,
         appMountId: 'app',
-      })
+    }),
+    new webpack.DefinePlugin({
+      'process.env.BOOKS_ENDPOINT': JSON.stringify(process.env.BOOKS_ENDPOINT)
+    })
   ],
   optimization: {
     runtimeChunk: 'single',
@@ -96,7 +100,7 @@ module.exports = (env, argv) => {
   if (argv.hot) {
     // Cannot use 'contenthash' when hot reloading is enabled.
     config.output.filename = '[name].[hash].js';
-  }
+ }
 
   return config;
 };

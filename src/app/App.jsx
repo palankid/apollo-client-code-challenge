@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client';
 
 import routes, { ROUTE_NAMES } from '../config/routes.config';
 import client from '../config/client.config';
-import NotFoundView from '../routes/NotFoundView';
+import RouteInvalidView from '../routes/RouteInvalidView';
 
 import LoadingMessage from '../components/LoadingMessage';
 
@@ -31,7 +31,7 @@ const App = () => {
                 >
                     <Switch>
                         {routeComponents}
-                        <Route component={NotFoundView} />
+                        <Route component={RouteInvalidView} />
                     </Switch>
                 </Suspense>
             </BrowserRouter>

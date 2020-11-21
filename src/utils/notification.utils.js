@@ -4,5 +4,6 @@ export const handleErrorIfApplicable = error => {
     error && notification.error({
         message: 'Network Error',
         description: String(error),
+        duration: 20
     });
 };

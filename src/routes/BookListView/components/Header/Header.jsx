@@ -5,11 +5,11 @@ import { BookOutlined, PlusOutlined } from '@ant-design/icons';
 
 import { ROUTE_NAMES } from '../../../../config/routes.config';
 
-import { useSelectedBookCount } from '../../operations/mutations/selectedBooks';
+import { useSelectedBookInfo } from '../../operations/mutations/selectedBooks';
 
 const Header = () => {
     const history = useHistory();
-    const booksInfo = useSelectedBookCount();
+    const booksInfo = useSelectedBookInfo();
     const shouldShowBookInfo = Boolean(booksInfo?.bookCount);
 
     const handleAddNewClick = () => {

@@ -11,7 +11,7 @@ export const useSelectedBookIds = () => {
     return { selectedBookIds, setSelectedBookIds };
 }
 
-export const useSelectedBookCount = () => {
+export const useSelectedBookInfo = () => {
     const { data } = useGetBookList();
     const selectedBookIds = selectedBookIdsVar();
 

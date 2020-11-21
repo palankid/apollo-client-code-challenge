@@ -1,41 +1,64 @@
-# Address Book
+# Book Registry Application
 
-This is a fictional address book app, where you can search for users addresses and
-personal information. The app should display a list of users for clients to browse and get
-personal information for a selected user.
+This is a fictional book registry application, where you can check existing books, add new and modify existing ones.
 
-## Building and running on localhost
+# Project architecture and structure
 
-First install dependencies:
+This project is using a feature based folder structure. All modules located in the root of the `src` folder should be considered as `global`. 
+
+The `routes` folder includes all project features, and each feature has its own `operations`, `components` that should be used inside of the given feature.
+
+# Installation
+
+Minimum required version of node is 12.19.0
+
+** In order to run the project, you need to rename the .env.example file to .env and set your environmental variables.**
+
+#### Install dependencies:
 
 ```sh
 npm install
 ```
 
-To run in hot module reloading mode:
+#### Run in development mode:
 
 ```sh
 npm start
 ```
 
-To run unit tests:
+#### Run unit and component tests:
 
 ```sh
 npm test
 ```
 
-To create a production build:
+#### Run Cypress test suites in browser
+
+```sh
+yarn run cy:open
+```
+
+#### Run Cypress test suites in headless mode
+
+```sh
+yarn run cy:run
+```
+
+**If you experience issues with running Cypress on your machine, please visit the following URL for further help https://docs.cypress.io/guides/guides/continuous-integration.html#Advanced-setup**
+
+**Additional resource on how to enable graphical interfaces on WSL2 environments https://dev.to/nickymeuleman/using-graphical-user-interfaces-like-cypress-in-wsl2-249j**
+
+#### Create a production build:
 
 ```sh
 npm run build-prod
 ```
 
-To create a development build:
+#### Create a development build:
 
 ```sh
 npm run build-dev
 ```
-
-## Running
+#### Running
 
 Open the file `dist/index.html` in your browser

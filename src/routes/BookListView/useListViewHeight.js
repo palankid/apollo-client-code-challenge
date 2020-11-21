@@ -6,7 +6,8 @@ const useListViewHeight = (headerRef) => {
     const [listViewHeight, setListViewHeight] = useState(0);
 
     const onWindowResize = debounce(() => {
-        const listViewHeight = window.innerHeight - headerRef.current.getBoundingClientRect().height;
+        const headerHeight = headerRef?.current?.getBoundingClientRect?.().height || 0;
+        const listViewHeight = window.innerHeight - headerHeight;
         setListViewHeight(listViewHeight);
     }, 100);
 
