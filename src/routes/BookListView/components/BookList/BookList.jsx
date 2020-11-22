@@ -10,7 +10,7 @@ import { ROUTE_NAMES } from '../../../../config/routes.config';
 
 const { Column } = Table;
 
-const ListView = ({ books, listViewHeight, loading }) => {
+const BookList = ({ books, listViewHeight, loading }) => {
     const history = useHistory();
     const { selectedBookIds, setSelectedBookIds } = useSelectedBookIds();
 
@@ -68,10 +68,10 @@ const ListView = ({ books, listViewHeight, loading }) => {
                 width={100}
                 render={(text, record) => (
                     <Button
-                    icon={<EditOutlined />}
-                    onClick={handleEditClick(record.id)}
+                        icon={<EditOutlined />}
+                        onClick={handleEditClick(record.id)}
                     >
-                    Edit
+                        Edit
                     </Button>
                 )}
             />
@@ -79,14 +79,14 @@ const ListView = ({ books, listViewHeight, loading }) => {
     );
 };
 
-ListView.propTypes = {
+BookList.propTypes = {
     books: array,
     listViewHeight: number.isRequired,
     loading: bool.isRequired
 };
 
-ListView.defaultProps = {
+BookList.defaultProps = {
     books: []
 }
 
-export default ListView;
+export default BookList;

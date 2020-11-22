@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookListView should test that component is rendered and not changed unintentionally 1`] = `
+<div
+  className="book-list-view"
+>
+  <div>
+    <Header />
+  </div>
+  <BookList
+    books={Array []}
+    listViewHeight={0}
+    loading={false}
+  />
+</div>
+`;

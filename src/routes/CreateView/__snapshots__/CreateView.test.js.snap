@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateView should test that component is rendered and not changed unintentionally 1`] = `
+<div
+  className="create-view"
+>
+  <BookOperationsHeader
+    titleFragment="Create"
+  />
+  <BookOperationsForm
+    disabled={false}
+    initialValues={
+      Object {
+        "author": "",
+        "id": null,
+        "price": null,
+        "title": "",
+      }
+    }
+    isCreateMode={true}
+    loading={false}
+    onCancel={[MockFunction]}
+    onFinish={[MockFunction]}
+  />
+</div>
+`;

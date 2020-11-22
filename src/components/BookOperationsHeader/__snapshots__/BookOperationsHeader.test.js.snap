@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BookOperationsHeader should test that component is rendered and not changed unintentionally 1`] = `
+<header
+  className="book-operations-header"
+>
+  <ForwardRef(BookOutlined)
+    className="book-operations-header__icon"
+    size={50}
+  />
+  <span
+    className="book-operations-header__title"
+  >
+    Books / 
+    Test
+  </span>
+</header>
+`;

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingMessage should test that component is not rendered 1`] = `""`;
+
+exports[`LoadingMessage should test that component is rendered and not changed unintentionally 1`] = `
+<div
+  className="loading-message"
+>
+  <Space
+    size="middle"
+  >
+    <Spin
+      size="large"
+      spinning={true}
+      wrapperClassName=""
+    />
+    <span
+      className="loading-message__text"
+    >
+      Loading...
+    </span>
+  </Space>
+</div>
+`;

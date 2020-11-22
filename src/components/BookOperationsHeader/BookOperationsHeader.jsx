@@ -1,11 +1,8 @@
 import React from 'react';
 import { string } from 'prop-types';
-import { useHistory } from 'react-router-dom';
 import { BookOutlined } from '@ant-design/icons';
 
-const Header = ({ titleFragment }) => {
-    const history = useHistory();
-
+const BookOperationsHeader = ({ titleFragment }) => {
     return (
         <header className="book-operations-header">
             <BookOutlined
@@ -19,8 +16,8 @@ const Header = ({ titleFragment }) => {
     );
 }
 
-Header.propTypes = {
+BookOperationsHeader.propTypes = {
     titleFragment: string.isRequired
 }
 
-export default Header;
+export default BookOperationsHeader;

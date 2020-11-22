@@ -6,7 +6,7 @@ module.exports = {
     "\\.(css|scss)$": "identity-obj-proxy"
   },
   rootDir: './src',
-  setupFilesAfterEnv: ['jest-enzyme'],
+  setupFilesAfterEnv: ['jest-enzyme', '<rootDir>/setupTests.js'],
   snapshotSerializers: ["enzyme-to-json/serializer"],
   testEnvironment: "enzyme",
   transform: {

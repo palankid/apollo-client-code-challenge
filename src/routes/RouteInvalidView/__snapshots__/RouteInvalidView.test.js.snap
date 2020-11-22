@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RouteInvalidView should test that component is rendered and not changed unintentionally 1`] = `
+<div
+  className="route-invalid"
+>
+  <span
+    className="route-invalid__content"
+  >
+    Error 404: Page not found
+  </span>
+</div>
+`;
