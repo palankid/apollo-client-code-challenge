@@ -12,33 +12,36 @@ The `routes` folder includes all project features, and each feature has its own 
 
 Minimum required version of node is 12.19.0
 
-** In order to run the project, you need to rename the .env.example file to .env and set your environmental variables.**
+** In order to run the project, you need to rename the .env.example file to .env and set BOOKS_ENDPOINT environment variable with your settings.**
 
-#### Install dependencies:
+#### Install dependencies
 
 ```sh
 npm install
 ```
 
-#### Run in development mode:
+#### Run in development mode
+Make sure that `apollo-test-app` is already started
 
 ```sh
 npm start
 ```
 
-#### Run unit and component tests:
+#### Run unit and component tests
 
 ```sh
 npm test
 ```
 
 #### Run Cypress test suites in browser
+Make sure that `apollo-test-app` is freshly started
 
 ```sh
 yarn run cy:open
 ```
 
 #### Run Cypress test suites in headless mode
+Make sure that `apollo-test-app` is freshly started
 
 ```sh
 yarn run cy:run
@@ -62,3 +65,6 @@ npm run build-dev
 #### Running
 
 Open the file `dist/index.html` in your browser
+
+### Compatible browsers
+Chrome, Firefox, Opera

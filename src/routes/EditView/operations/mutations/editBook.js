@@ -19,7 +19,7 @@ const EDIT_BOOK = gql`
 export const useEditBook = () => {
     const location = useLocation();
     const history = useHistory();
-    const { loading, error, book } = useGetBook(location.state?.bookId);
+    const { loading, error, data } = useGetBook(location.state?.bookId);
     const [ editBook, { loading: isEditLoading, error: isEditError } ] = useMutation(EDIT_BOOK);
 
     handleErrorIfApplicable(error);
@@ -40,7 +40,7 @@ export const useEditBook = () => {
     return {
         loading: loading || isEditLoading,
         error: error || isEditError,
-        book,
+        book: data?.book,
         handleFinish,
         handleCancel
     } ;

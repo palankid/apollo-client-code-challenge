@@ -110,12 +110,7 @@ BookOperationsForm.propTypes = {
 };
 
 BookOperationsForm.defaultProps = {
-    initialValues: {
-        id: null,
-        title: '',
-        author: '',
-        price: null
-    },
+    initialValues: null,
     isCreateMode: true,
     disabled: false,
     loading: false

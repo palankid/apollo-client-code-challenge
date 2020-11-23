@@ -11,14 +11,14 @@ const EditView = () => {
     return (
         <div className="edit-view">
             <Header titleFragment="Edit" />
-            <BookOperationsForm
+            {book && <BookOperationsForm
                 isCreateMode={false}
                 initialValues={book}
                 disabled={Boolean(error)}
                 loading={loading}
                 onFinish={handleFinish}
                 onCancel={handleCancel}
-            />
+            />}
         </div>
     );
 }

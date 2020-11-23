@@ -1,4 +1,4 @@
-context('Add New Book', () => {
+context('Edit Book', () => {
     context('Happy Path', () => {
         beforeEach(() => {
             cy.visit('http://localhost:8080/');
@@ -10,7 +10,7 @@ context('Add New Book', () => {
                 .should('have.text', 'Books / Edit');
         });
 
-        it('Submit a new book and test it\'s properties is present in the table', () => {
+        it('Submit modifications and test it\'s properties is present in the table', () => {
             const title = 'A Brief History of Time 2nd Edition';
             const author = 'Stephen Hawking Jr.';
             const price = '87.21';

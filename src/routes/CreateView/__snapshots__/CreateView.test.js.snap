@@ -9,14 +9,7 @@ exports[`CreateView should test that component is rendered and not changed unint
   />
   <BookOperationsForm
     disabled={false}
-    initialValues={
-      Object {
-        "author": "",
-        "id": null,
-        "price": null,
-        "title": "",
-      }
-    }
+    initialValues={null}
     isCreateMode={true}
     loading={false}
     onCancel={[MockFunction]}
